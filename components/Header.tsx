@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { useRouter } from '../App';
+import { ContactModal } from './ContactModal';
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { currentPath, navigate } = useRouter();
 
   useEffect(() => {
@@ -21,7 +23,6 @@ export const Header: React.FC = () => {
     { name: 'Process', href: '/process' },
     { name: 'Demo', href: '/demo' },
     { name: 'Results', href: '/results' },
-    { name: 'Contact', href: '/contact' },
   ];
 
   const handleNav = (path: string) => {
@@ -56,11 +57,11 @@ export const Header: React.FC = () => {
               {link.name}
             </button>
           ))}
-          <button 
-            onClick={() => handleNav('/schedule')}
+          <button
+            onClick={() => setIsModalOpen(true)}
             className="group flex items-center gap-2 px-5 py-2 bg-white text-black text-sm font-semibold rounded-sm hover:bg-zinc-200 transition-all outline-none"
           >
-            Schedule
+            Get Started
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </nav>
@@ -88,14 +89,19 @@ export const Header: React.FC = () => {
               {link.name}
             </button>
           ))}
-          <button 
-            onClick={() => handleNav('/schedule')}
+          <button
+            onClick={() => {
+              setIsMenuOpen(false);
+              setIsModalOpen(true);
+            }}
             className="w-full py-3 bg-white text-black font-bold rounded-sm text-center outline-none"
           >
-            Schedule Consultation
+            Get Started
           </button>
         </div>
       )}
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </header>
   );
 };

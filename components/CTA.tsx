@@ -1,11 +1,11 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { useRouter } from '../App';
+import { ContactModal } from './ContactModal';
 
 export const CTA: React.FC = () => {
-  const { navigate } = useRouter();
   const [isVisible, setIsVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -40,14 +40,16 @@ export const CTA: React.FC = () => {
           Install infrastructure that scales. Our team is ready to audit your operations and install the systems required for predictable growth.
         </p>
         
-        <button 
-          onClick={() => navigate('/schedule')} 
+        <button
+          onClick={() => setIsModalOpen(true)}
           className="group px-10 py-5 bg-white text-black font-bold text-xl rounded-sm hover:bg-zinc-200 transition-all inline-flex items-center justify-center gap-3 mx-auto outline-none"
         >
           Book Strategy Call
           <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

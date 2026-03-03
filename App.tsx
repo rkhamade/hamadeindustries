@@ -7,8 +7,6 @@ const Home = lazy(() => import('./pages/Home').then(m => ({ default: m.Home })))
 const ServicesPage = lazy(() => import('./pages/ServicesPage').then(m => ({ default: m.ServicesPage })));
 const ProcessPage = lazy(() => import('./pages/ProcessPage').then(m => ({ default: m.ProcessPage })));
 const WhyUsPage = lazy(() => import('./pages/WhyUsPage').then(m => ({ default: m.WhyUsPage })));
-const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
-const SchedulePage = lazy(() => import('./pages/SchedulePage').then(m => ({ default: m.SchedulePage })));
 const DemoHub = lazy(() => import('./pages/DemoHub').then(m => ({ default: m.DemoHub })));
 const DemoDetail = lazy(() => import('./pages/DemoDetail').then(m => ({ default: m.DemoDetail })));
 const ResultsPage = lazy(() => import('./pages/ResultsPage').then(m => ({ default: m.ResultsPage })));
@@ -71,8 +69,6 @@ const App: React.FC = () => {
       case '/services': return <ServicesPage />;
       case '/process': return <ProcessPage />;
       case '/why-us': return <WhyUsPage />;
-      case '/contact': return <ContactPage />;
-      case '/schedule': return <SchedulePage />;
       case '/demo': return <DemoHub />;
       case '/demo/:id': return <DemoDetail />;
       case '/results': return <ResultsPage />;
