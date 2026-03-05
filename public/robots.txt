@@ -1,0 +1,15 @@
+# Hamade Industries - Robots.txt
+# https://hamadeindustries.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://hamadeindustries.com/sitemap.xml
+
+# Crawl-delay for polite crawlers
+Crawl-delay: 1
+
+# Disallow admin or private paths (if any in the future)
+# Disallow: /admin/
+# Disallow: /private/
